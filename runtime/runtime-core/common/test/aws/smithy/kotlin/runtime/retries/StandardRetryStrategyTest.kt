@@ -252,7 +252,7 @@ class StringRetryPolicy : RetryPolicy<String> {
         "fail" -> RetryDirective.TerminateAndFail
         "client-error" -> RetryDirective.RetryError(RetryErrorType.ClientSide)
         "server-error" -> RetryDirective.RetryError(RetryErrorType.ServerSide)
-        "timeout" -> RetryDirective.RetryError(RetryErrorType.Timeout)
+        "timeout" -> RetryDirective.RetryError(RetryErrorType.Transient)
         "throttled" -> RetryDirective.RetryError(RetryErrorType.Throttling)
         null -> {
             assertNotNull(result.exceptionOrNull()) // If the value is null, this must be an exception
